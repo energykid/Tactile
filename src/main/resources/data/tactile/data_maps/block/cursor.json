@@ -1,0 +1,54 @@
+{
+  "values": {
+    "minecraft:suspicious_gravel": {
+      "texture": "brush"
+    },
+    "minecraft:suspicious_sand": {
+      "texture": "brush"
+    },
+    "#tactile:always_interactable": {
+      "texture": "empty"
+    },
+
+    "minecraft:sweet_berry_bush": {
+      "texture": "empty",
+      "blockstates": ["age=2", "age=3"]
+    },
+    "minecraft:cave_vines": {
+      "texture": "empty",
+      "blockstates": ["berries=true"]
+    },
+    "minecraft:cave_vines_plant": {
+      "texture": "empty",
+      "blockstates": ["berries=true"]
+    },
+
+    "minecraft:lectern": {
+      "texture": "book",
+      "blockstates": ["has_book=false"]
+    },
+    "minecraft:vault": {
+      "texture": "key",
+      "blockstates": ["vault_state=active"]
+    },
+    "minecraft:end_portal_frame": {
+      "texture": "mystery",
+      "blockstates": ["eye=false"]
+    },
+    "minecraft:jukebox": {
+      "texture": "mystery"
+    },
+    "minecraft:composter": {
+      "texture": "bone_meal"
+    },
+    "#minecraft:crops": {
+      "texture": "bone_meal"
+    },
+    "#minecraft:saplings": {
+      "texture": "bone_meal"
+    },
+    "minecraft:respawn_anchor": {
+      "texture": "mystery"
+    }
+  }
+}

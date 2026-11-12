@@ -5,6 +5,12 @@
     },
     "minecraft:sheep": {
       "texture": "shears"
+    },
+    "minecraft:boat": {
+      "texture": "empty"
+    },
+    "minecraft:chest_boat": {
+      "texture": "empty"
     }
   }
 }

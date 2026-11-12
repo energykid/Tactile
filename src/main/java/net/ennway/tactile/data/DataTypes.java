@@ -5,24 +5,21 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.registries.datamaps.DataMapType;
-import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
-
-import javax.swing.text.html.parser.Entity;
-import java.awt.*;
+import net.neoforged.neoforge.registries.datamaps.AdvancedDataMapType;
+import net.neoforged.neoforge.registries.datamaps.DataMapValueRemover;
 
 public class DataTypes {
-    public static final DataMapType<Block, CursorSwapData> BLOCK_CURSOR_SWAPS = DataMapType.builder(
-            ResourceLocation.fromNamespaceAndPath(Tactile.MODID, "cursor_icons"),
+    public static final AdvancedDataMapType<Block, BlockCursorSwapData, DataMapValueRemover.Default<BlockCursorSwapData, Block>> BLOCK_CURSOR_SWAPS
+            = AdvancedDataMapType.builder(
+            ResourceLocation.fromNamespaceAndPath(Tactile.MODID, "cursor"),
             Registries.BLOCK,
-            CursorSwapData.CODEC
+            BlockCursorSwapData.CODEC
     ).build();
 
-    public static final DataMapType<EntityType<?>, CursorSwapData> ENTITY_CURSOR_SWAPS = DataMapType.builder(
-            ResourceLocation.fromNamespaceAndPath(Tactile.MODID, "cursor_icons"),
+    public static final AdvancedDataMapType<EntityType<?>, EntityCursorSwapData, DataMapValueRemover.Default<EntityCursorSwapData, EntityType<?>>> ENTITY_CURSOR_SWAPS
+            = AdvancedDataMapType.builder(
+            ResourceLocation.fromNamespaceAndPath(Tactile.MODID, "cursor"),
             Registries.ENTITY_TYPE,
-            CursorSwapData.CODEC
+            EntityCursorSwapData.CODEC
     ).build();
 }
