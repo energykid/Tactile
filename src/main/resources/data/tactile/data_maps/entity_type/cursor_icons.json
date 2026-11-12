@@ -1,0 +1,10 @@
+{
+  "values": {
+    "minecraft:armadillo": {
+      "texture": "brush"
+    },
+    "minecraft:sheep": {
+      "texture": "shears"
+    }
+  }
+}

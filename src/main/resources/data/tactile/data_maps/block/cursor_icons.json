@@ -1,0 +1,16 @@
+{
+  "values": {
+    "minecraft:suspicious_gravel": {
+      "texture": "brush"
+    },
+    "minecraft:suspicious_sand": {
+      "texture": "brush"
+    },
+    "minecraft:sweet_berry_bush": {
+      "texture": "empty"
+    },
+    "#tactile:always_interactable": {
+      "texture": "empty"
+    }
+  }
+}
