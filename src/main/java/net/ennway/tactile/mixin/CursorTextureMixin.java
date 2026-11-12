@@ -33,7 +33,7 @@ public abstract class CursorTextureMixin {
             LocalPlayer player = Minecraft.getInstance().player;
             Level level = player.level();
 
-            HitResult p = player.pick(player.blockInteractionRange(), 1, false);
+            HitResult p = Minecraft.getInstance().hitResult;
 
             var pos = BlockPos.containing(p.getLocation());
 
@@ -50,9 +50,16 @@ public abstract class CursorTextureMixin {
 
             if (p.getType() == HitResult.Type.ENTITY)
             {
-                var type = ((EntityHitResult)p).getEntity().getType();
+                var eP = p.getLocation();
+                var aabb = new AABB(eP.x - 1, eP.y - 1, eP.z - 1, eP.x + 1, eP.y + 1, eP.z + 1);
 
-                data = type.builtInRegistryHolder().getData(DataTypes.ENTITY_CURSOR_SWAPS);
+                List<Entity> entityList = level.getEntities(EntityTypeTest.forClass(Entity.class), aabb, e -> true);
+
+                if (!entityList.isEmpty())
+                {
+                    var type = entityList.getFirst().getType();
+                    data = type.builtInRegistryHolder().getData(DataTypes.ENTITY_CURSOR_SWAPS);
+                }
             }
 
             if (data != null)
