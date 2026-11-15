@@ -62,8 +62,8 @@ public abstract class CursorTextureMixin
 
         var data = bSH.getData(DataTypes.BLOCK_CURSOR_SWAPS);
 
-        guiGraphics.drawCenteredString(Minecraft.getInstance().font, debug, 200, 100, 16777215);
-        guiGraphics.drawCenteredString(Minecraft.getInstance().font, CompoundParsing.debug, 200, 200, 16777215);
+        //guiGraphics.drawCenteredString(Minecraft.getInstance().font, debug, 200, 100, 16777215);
+        //guiGraphics.drawCenteredString(Minecraft.getInstance().font, CompoundParsing.debug, 200, 200, 16777215);
     }
 
     private static String debug;
