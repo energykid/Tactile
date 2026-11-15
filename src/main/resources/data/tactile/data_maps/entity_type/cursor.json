@@ -3,8 +3,13 @@
     "minecraft:armadillo": {
       "texture": "brush"
     },
+    "minecraft:zombie": {
+      "texture": "brush",
+      "data": ["hurttime>1"]
+    },
     "minecraft:sheep": {
-      "texture": "shears"
+      "texture": "shears",
+      "data": ["sheared=0"]
     },
     "minecraft:boat": {
       "texture": "empty"

@@ -11,16 +11,28 @@
     },
 
     "minecraft:sweet_berry_bush": {
-      "texture": "empty",
-      "blockstates": ["age=2", "age=3"]
+      "conditions": [
+        {
+          "texture": "empty",
+          "blockstates": ["age=2", "age=3"]
+        },
+        {
+          "texture": "bone_meal",
+          "blockstates": ["age=0", "age=1"]
+        }
+      ]
     },
-    "minecraft:cave_vines": {
-      "texture": "empty",
-      "blockstates": ["berries=true"]
-    },
-    "minecraft:cave_vines_plant": {
-      "texture": "empty",
-      "blockstates": ["berries=true"]
+    "#tactile:berries_interactable": {
+      "conditions": [
+        {
+          "texture": "empty",
+          "blockstates": ["berries=true"]
+        },
+        {
+          "texture": "bone_meal",
+          "blockstates": ["berries=false"]
+        }
+      ]
     },
 
     "minecraft:lectern": {
@@ -36,7 +48,7 @@
       "blockstates": ["eye=false"]
     },
     "minecraft:jukebox": {
-      "texture": "mystery"
+      "texture": "jukebox"
     },
     "minecraft:composter": {
       "texture": "bone_meal"
