@@ -3,13 +3,13 @@
     "minecraft:armadillo": {
       "texture": "brush"
     },
-    "minecraft:zombie": {
-      "texture": "brush",
-      "data": ["hurttime>1"]
-    },
     "minecraft:sheep": {
       "texture": "shears",
-      "data": ["sheared=0"]
+      "data": ["Sheared=0"]
+    },
+    "minecraft:camel": {
+      "texture": "empty",
+      "data": ["SaddleItem.count>0"]
     },
     "minecraft:boat": {
       "texture": "empty"
