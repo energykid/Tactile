@@ -13,11 +13,17 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NumericTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Saddleable;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.*;
@@ -27,7 +33,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.io.Console;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 @Mixin(Gui.class)
 public abstract class CursorTextureMixin
@@ -54,7 +62,7 @@ public abstract class CursorTextureMixin
 
         var data = bSH.getData(DataTypes.BLOCK_CURSOR_SWAPS);
 
-        guiGraphics.drawCenteredString(Minecraft.getInstance().font, MainParser.debug, 200, 100, 16777215);
+        guiGraphics.drawCenteredString(Minecraft.getInstance().font, debug, 200, 100, 16777215);
         guiGraphics.drawCenteredString(Minecraft.getInstance().font, CompoundParsing.debug, 200, 200, 16777215);
     }
 
@@ -93,9 +101,13 @@ public abstract class CursorTextureMixin
                 var type = ent.getType();
                 entityData = type.builtInRegistryHolder().getData(DataTypes.ENTITY_CURSOR_SWAPS);
 
+                CompoundTag tag = serializeNBT(ent);
 
-                CompoundTag tag1 = ent.serializeNBT(ent.registryAccess());
-                loc = MainParser.findFrom(tag1, entityData, ent);
+                if (!Objects.equals(debug, tag.getAllKeys().toString()))
+                    Tactile.LOGGER.info(tag.getAllKeys().toString());
+                debug = tag.getAllKeys().toString();
+
+                loc = MainParser.findFrom(tag, entityData, ent);
 
                 if (loc != null)
                 {
@@ -147,5 +159,10 @@ public abstract class CursorTextureMixin
         }
 
         return p_294549_;
+    }
+    private static CompoundTag serializeNBT(Entity entity) {
+        String id = entity.getEncodeId();
+
+        return EntityType.byString(id).get().tryCast(entity).serializeNBT(entity.registryAccess());
     }
 }

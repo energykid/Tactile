@@ -28,44 +28,36 @@ public class MainParser {
                         Object target = BasicParsing.typeOfString(states[1]);
                         String operation = states[2];
 
-                        if (!dataName.contains("."))
-                        {
-                            tag.getAllKeys().forEach(T -> {
-                                if (Objects.equals(T.toLowerCase(), dataName.toLowerCase()))
+
+                        tag.getAllKeys().forEach(T -> {
+                            if (Objects.equals(T.toLowerCase(), dataName.toLowerCase()))
+                            {
+                                //debug = T + " .. " + dataName + " / " + tag.get(T).toString() + " .. " + target.toString();
+                                if (Objects.equals(operation, "="))
                                 {
-                                    //debug = T + " .. " + dataName + " / " + tag.get(T).toString() + " .. " + target.toString();
-                                    if (Objects.equals(operation, "="))
-                                    {
-                                        if (tag.get(T) instanceof NumericTag numericTag) {
-                                            if (Objects.equals(numericTag.getAsDouble(), BasicParsing.typeOfString(states[1])))
-                                                loc = ResourceLocation.fromNamespaceAndPath(Tactile.MODID, entityData.texture().get());
-                                        }
-                                    }
-                                    else if (Objects.equals(operation, "!="))
-                                    {
-                                        if (tag.get(T) instanceof NumericTag numericTag) {
-                                            if (!Objects.equals(numericTag.getAsDouble(), BasicParsing.typeOfString(states[1])))
-                                                loc = ResourceLocation.fromNamespaceAndPath(Tactile.MODID, entityData.texture().get());
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (tag.get(T) instanceof NumericTag numericTag)
-                                        {
-                                            int operationTarget = Objects.equals(operation, ">") ? 1 : -1;
-                                            if (BasicParsing.compareNumericValues(numericTag.getAsDouble(), target, target.getClass()) == operationTarget)
-                                                loc = ResourceLocation.fromNamespaceAndPath(Tactile.MODID, entityData.texture().get());
-                                        }
+                                    if (tag.get(T) instanceof NumericTag numericTag) {
+                                        if (Objects.equals(numericTag.getAsDouble(), BasicParsing.typeOfString(states[1])))
+                                            loc = ResourceLocation.fromNamespaceAndPath(Tactile.MODID, entityData.texture().get());
                                     }
                                 }
-                            });
-                        }
-
-                        Tag t = tag.get("SaddleItem");
-                        if (t != null)
-                        {
-                            debug = t.toString();
-                        }
+                                else if (Objects.equals(operation, "!="))
+                                {
+                                    if (tag.get(T) instanceof NumericTag numericTag) {
+                                        if (!Objects.equals(numericTag.getAsDouble(), BasicParsing.typeOfString(states[1])))
+                                            loc = ResourceLocation.fromNamespaceAndPath(Tactile.MODID, entityData.texture().get());
+                                    }
+                                }
+                                else
+                                {
+                                    if (tag.get(T) instanceof NumericTag numericTag)
+                                    {
+                                        int operationTarget = Objects.equals(operation, ">") ? 1 : -1;
+                                        if (BasicParsing.compareNumericValues(numericTag.getAsDouble(), target, target.getClass()) == operationTarget)
+                                            loc = ResourceLocation.fromNamespaceAndPath(Tactile.MODID, entityData.texture().get());
+                                    }
+                                }
+                            }
+                        });
 
                         if (loc != null) return loc;
                     }

@@ -5,11 +5,7 @@
     },
     "minecraft:sheep": {
       "texture": "shears",
-      "data": ["Sheared=0"]
-    },
-    "minecraft:camel": {
-      "texture": "empty",
-      "data": ["SaddleItem.count>0"]
+      "data": ["Sheared=false"]
     },
     "minecraft:boat": {
       "texture": "empty"
