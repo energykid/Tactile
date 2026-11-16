@@ -63,6 +63,7 @@ public abstract class CursorTextureMixin
         var data = bSH.getData(DataTypes.BLOCK_CURSOR_SWAPS);
 
         //guiGraphics.drawCenteredString(Minecraft.getInstance().font, debug, 200, 100, 16777215);
+        //guiGraphics.drawCenteredString(Minecraft.getInstance().font, MainParser.debug, 200, 150, 16777215);
         //guiGraphics.drawCenteredString(Minecraft.getInstance().font, CompoundParsing.debug, 200, 200, 16777215);
     }
 
@@ -107,7 +108,7 @@ public abstract class CursorTextureMixin
                     Tactile.LOGGER.info(tag.getAllKeys().toString());
                 debug = tag.getAllKeys().toString();
 
-                loc = MainParser.findFrom(tag, entityData, ent);
+                loc = MainParser.findFrom(tag, entityData);
 
                 if (loc != null)
                 {
@@ -161,8 +162,7 @@ public abstract class CursorTextureMixin
         return p_294549_;
     }
     private static CompoundTag serializeNBT(Entity entity) {
-        String id = entity.getEncodeId();
-
-        return EntityType.byString(id).get().tryCast(entity).serializeNBT(entity.registryAccess());
+        CompoundTag ret = new CompoundTag();
+        return entity.saveWithoutId(ret);
     }
 }

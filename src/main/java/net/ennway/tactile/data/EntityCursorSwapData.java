@@ -13,9 +13,9 @@ public record EntityCursorSwapData(Optional<String> texture, Optional<List<Strin
             Codec.list(Condition.CODEC).optionalFieldOf("conditions").forGetter(EntityCursorSwapData::conditions)
     ).apply(instance, EntityCursorSwapData::new));
 
-    public record Condition(String texture, Optional<List<String>> dataValues) {
+    public record Condition(Optional<String> texture, Optional<List<String>> dataValues) {
         public static final Codec<Condition> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                Codec.STRING.fieldOf("texture").forGetter(Condition::texture),
+                Codec.STRING.optionalFieldOf("texture").forGetter(Condition::texture),
                 Codec.list(Codec.STRING).optionalFieldOf("data").forGetter(Condition::dataValues)
         ).apply(instance, Condition::new));
     }

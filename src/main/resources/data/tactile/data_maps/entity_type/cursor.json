@@ -5,7 +5,7 @@
     },
     "minecraft:sheep": {
       "texture": "shears",
-      "data": ["Sheared=false"]
+      "data": ["Sheared=0"]
     },
     "minecraft:boat": {
       "texture": "empty"
